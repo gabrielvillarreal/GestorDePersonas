@@ -23,14 +23,14 @@ namespace ConsoleApp1.Repositorio
             var personaExiste = Personas.ContainsKey(numeroDocumento);
             if (!personaExiste)
             {
-                Personas[numeroDocumento] = personasss;
+                Personas[numeroDocumento] = persona;
             }
         }
 
         public void Eliminar(string numeroDocumento)   
         {
             Persona personaAEliminar = null;
-            foreach (var persona in Personas)
+            /*foreach (var persona in Personas)
             {
                 if (persona.NumeroDeDocumento == numeroDocumento)
                 {
@@ -41,12 +41,20 @@ namespace ConsoleApp1.Repositorio
             if (personaAEliminar != null)
             {
                 Personas.Remove(personaAEliminar);
-            }
+            }*/
         }
 
         public void Actualizar(Persona persona)
         {
-            foreach (var personaActual in Personas)
+            var personaAActualizar = Personas[persona.NumeroDeDocumento];
+
+            if (personaAActualizar!= null)
+            {
+                personaAActualizar.Nombre = persona.Nombre;
+                personaAActualizar.Apellido = persona.Apellido;
+                personaAActualizar.FechaNacimiento = persona.FechaNacimiento;
+            }
+            /*foreach (var personaActual in Personas)
             {
                 if (personaActual.NumeroDeDocumento == persona.NumeroDeDocumento)
                 {
@@ -54,19 +62,26 @@ namespace ConsoleApp1.Repositorio
                     personaActual.Apellido = persona.Apellido;
                     personaActual.FechaNacimiento = persona.FechaNacimiento;
                 }
-            }
+            }*/
         }
 
         public void Actualizar(string numeroDocumento, string nombre, string apellido)
         {
-            foreach (var personaActual in Personas)
+            var personaAActualizar = Personas[numeroDocumento];
+            if (personaAActualizar !=null)
+                {
+                    personaAActualizar.Nombre = nombre;
+                    personaAActualizar.Apellido = apellido;
+                    
+                }
+            /*foreach (var personaActual in Personas)
             {
                 if (personaActual.NumeroDeDocumento == numeroDocumento)
                 {
                     personaActual.Nombre = nombre;
                     personaActual.Apellido = apellido;
                 }
-            }
+            }*/
         }
     }
 }
